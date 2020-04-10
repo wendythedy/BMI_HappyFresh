@@ -5,11 +5,11 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def main(event, context):
-    logger.info('**********Request**********')
+    logger.info('********************Request********************')
     logger.info(event)
 
-    height = event['height']
-    weight = event['weight']
+    height = int(event['height'])
+    weight = int(event['weight'])
     bmi = round(weight/(height/100)**2,2)
 
     if(bmi>=18.5) and (bmi<=24.9):
@@ -33,6 +33,6 @@ def main(event, context):
             "label":"unclassified",
             "message": "error input"
         }
-    logger.info('**********Response**********')
+    logger.info('********************Response********************')
     logger.info(response)    
     return response
