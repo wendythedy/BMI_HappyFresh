@@ -16,7 +16,7 @@ def main(event, context):
         response = {
             "statusCode": 200,
             "bmi": bmi,
-            "label":"healthy",
+            "label":"very healthy",
             "message": "success"
         }
     elif(bmi>=25):
