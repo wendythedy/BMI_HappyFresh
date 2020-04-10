@@ -1,22 +1,30 @@
-from flask import Flask, request, jsonify
+import json
 
-app = Flask(__name__)
-
-@app.route('/', methods=['GET'])
-def index():
-    height = int(request.args.get('height'))
-    weight = int(request.args.get('weight'))
+def main(event, context):
+    height = int(event["height"])
+    weight = int(event["weight"])
     bmi = round(weight/(height/100)**2,2)
 
-    if(height<=0) or (weight<=0):
-        return jsonify({'message':'height or weight must not be below or equal to 0'})
-
     if(bmi>=18.5) and (bmi<=24.9):
-        return jsonify({'bmi':bmi,'label':'healthy'})
+        response = {
+            "statusCode": 200,
+            "bmi": bmi,
+            "label":"healthy",
+            "message": "success"
+        }
     elif(bmi>=25):
-        return jsonify({'bmi':bmi,'label':'overweight'})
+        response = {
+            "statusCode": 200,
+            "bmi": bmi,
+            "label":"overweight",
+            "message": "success"
+        }
     else:
-        return jsonify({'bmi':bmi,'label':'unclassified'})
-
-if __name__ == '__main__':
-    app.run(debug=True)
+        response = {
+            "statusCode": 200,
+            "bmi": bmi,
+            "label":"unclassified",
+            "message": "error input"
+        }
+        
+    return response
