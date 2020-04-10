@@ -5,7 +5,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def main(event, context):
-    logger.info('## EVENT')
+    logger.info('**********Request**********')
     logger.info(event)
 
     height = event['height']
@@ -16,7 +16,7 @@ def main(event, context):
         response = {
             "statusCode": 200,
             "bmi": bmi,
-            "label":"very healthy",
+            "label":"healthy",
             "message": "success"
         }
     elif(bmi>=25):
@@ -33,5 +33,6 @@ def main(event, context):
             "label":"unclassified",
             "message": "error input"
         }
+    logger.info('**********Response**********')
     logger.info(response)    
     return response
