@@ -1,6 +1,13 @@
 import json
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
+    logger.info('## EVENT')
+    logger.info(event)
+
     height = event['height']
     weight = event['weight']
     bmi = round(weight/(height/100)**2,2)
@@ -26,5 +33,5 @@ def lambda_handler(event, context):
             "label":"unclassified",
             "message": "error input"
         }
-        
+    logger.info(response)    
     return response

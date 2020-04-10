@@ -16,8 +16,8 @@ Resources:
         ApiEvent:
           Type: Api
           Properties: 
-            Path: /getBMI
-            Method: get
+            Path: /BMI
+            Method: post
       Environment:
         Variables:
           REGION: ap-southeast-1
