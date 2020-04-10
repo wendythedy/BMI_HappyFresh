@@ -1,8 +1,8 @@
 import json
 
-def main(event, context):
-    height = int(event["height"])
-    weight = int(event["weight"])
+def lambda_handler(event, context):
+    height = event['height']
+    weight = event['weight']
     bmi = round(weight/(height/100)**2,2)
 
     if(bmi>=18.5) and (bmi<=24.9):
