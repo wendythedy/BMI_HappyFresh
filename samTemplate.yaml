@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: app.main
       Runtime: python3.8
-      CodeUrl: ./code
+      CodeUri: ./code
       Description: 'Lambda function to calculate BMI'
       MemorySize: 128
       Timeout: 30
