@@ -43,7 +43,7 @@ def main(event, context):
     else:
         response = {
             "statusCode": 200,
-            "bmi": "-",
+            "bmi": bmi,
             "label":"unclassified",
             "message": "success"
         }
