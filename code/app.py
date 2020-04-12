@@ -9,7 +9,9 @@ def main(event, context):
     logger.info(event)
 
     #Validate
-    if (event['height'].isnumeric() == False) or (event['weight'].isnumeric() == False):
+    try:
+        int(event['height']) 
+    except ValueError:
         response = {
             "statusCode": 200,
             "bmi": "-",
@@ -19,7 +21,21 @@ def main(event, context):
         logger.info('********************Response********************')
         logger.info(response)    
         return response
-    elif (int(event['height']) <= 0) or (int(event['weight']) <= 0):
+
+    try:
+        int(event['weight']) 
+    except ValueError:
+        response = {
+            "statusCode": 200,
+            "bmi": "-",
+            "label":"-",
+            "message": "the height or weight cannot be string"
+        }
+        logger.info('********************Response********************')
+        logger.info(response)    
+        return response
+
+    if (int(event['height']) <= 0) or (int(event['weight']) <= 0):
         response = {
             "statusCode": 200,
             "bmi": "-",
